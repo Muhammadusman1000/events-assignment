@@ -6,7 +6,7 @@ const MyRegistrations = () => {
   if (registrations.length === 0) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-blue-50 p-6">
-        <p className="text-gray-600 text-base sm:text-lg md:text-xl">
+        <p className="text-gray-600 text-base sm:text-lg md:text-xl mt-16">
           No registrations found.
         </p>
       </div>
@@ -15,7 +15,7 @@ const MyRegistrations = () => {
 
   return (
     <div className="min-h-screen bg-blue-50 p-6">
-      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center mt-16">
         My Registrations
       </h1>
 

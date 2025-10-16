@@ -65,11 +65,21 @@ export default function EventsCards() {
                   {event.body}
                 </p>
 
-                <Button
+                {/* <Button
                   label="Register"
                   icon="pi pi-check"
                   className="mt-4 py-1 rounded-md bg-blue-600 hover:bg-blue-700 text-white border-none w-full"
                   onClick={() => navigate(`/register/${event.title}`)}
+                /> */}
+                <Button
+                  label="Register"
+                  icon="pi pi-check"
+                  className="mt-4 py-1 rounded-md bg-blue-600 hover:bg-blue-700 text-white border-none w-full"
+                  onClick={() =>
+                    navigate(`/register/${event.id}`, {
+                      state: { eventTitle: event.title },
+                    })
+                  }
                 />
               </div>
             </motion.div>

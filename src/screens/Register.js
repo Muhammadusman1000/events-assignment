@@ -9,7 +9,7 @@ const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const eventTitle = location.state?.title || "";
+  const eventTitle = location.state?.eventTitle || "";
 
   const initialFormState = { name: "", email: "", phone: "" };
   const [form, setForm] = useState(initialFormState);
@@ -47,7 +47,7 @@ const Register = () => {
         <h2 className="text-xl font-bold text-center mb-2">Register</h2>
 
         {eventTitle && (
-          <p className="text-center text-gray-700 mb-4">Event: {eventTitle}</p>
+          <p className="text-center text-gray-700 mb-4"> {eventTitle}</p>
         )}
 
         {error && <p className="text-red-500 text-center mb-3">{error}</p>}

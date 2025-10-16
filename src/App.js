@@ -3,7 +3,7 @@ import "./App.css";
 import Home from "./screens/Home";
 import Header from "./components/Header";
 import Register from "./screens/Register";
-import MyRegistrations from "./components/MyRegistrations";
+import MyRegistrations from "./screens/MyRegistrations";
 import RegistrationConfirmation from "./screens/RegistrationConfirmation";
 
 function App() {
