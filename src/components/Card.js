@@ -64,13 +64,6 @@ export default function EventsCards() {
                 <p className="text-gray-600 text-sm flex-grow line-clamp-3">
                   {event.body}
                 </p>
-
-                {/* <Button
-                  label="Register"
-                  icon="pi pi-check"
-                  className="mt-4 py-1 rounded-md bg-blue-600 hover:bg-blue-700 text-white border-none w-full"
-                  onClick={() => navigate(`/register/${event.title}`)}
-                /> */}
                 <Button
                   label="Register"
                   icon="pi pi-check"
