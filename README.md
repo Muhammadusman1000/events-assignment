@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+// ...existing code...
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Events (Frontend Only) — Project Description
 
-## Available Scripts
+## Project Overview
 
-In the project directory, you can run:
+A frontend-only React application that lists events fetched from JSONPlaceholder and provides a simple registration flow. There is no backend involved — all event data is read-only from the mock API and all user registrations are stored locally (Redux + localStorage).
 
-### `npm start`
+## Key Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Fetch and render events from JSONPlaceholder on the main page
+- Open a registration form for any event
+- Save registration data in Redux and persist to localStorage
+- Redirect to a Thank You page showing submitted details
+- "My Registrations" page to view all saved registrations
+- No backend or server components required
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## User Flow
 
-### `npm test`
+1. User lands on the Events (main) page and sees a list of events.
+2. User clicks "Register" on an event → registration form opens (route or modal).
+3. User fills and submits the form → data saved to Redux and persisted to localStorage.
+4. App navigates to the Thank You page showing the registration details.
+5. User can go to "My Registrations" to see all saved registrations or return to Events.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Pages / Routes
 
-### `npm run build`
+- /events — main list of events (fetched from JSONPlaceholder)
+- /events/:id/register — registration form (or presented as a modal)
+- /thank-you — displays registration confirmation and details; includes "Go to Events" button
+- /my-registrations — lists all registrations saved in Redux/localStorage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Data & State Management
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Events: fetched from JSONPlaceholder (mock, read-only)
+- Registrations: stored in Redux (registration slice)
+- Persistence: registration slice is synced to localStorage (initialize Redux state from localStorage on app start)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Implementation Notes
 
-### `npm run eject`
+- Keep JSONPlaceholder fetch logic isolated in a service (e.g., src/services/api.js) so it can be replaced later.
+- Validate form fields before dispatching registration actions.
+- Use React Router for navigation and route-based pages.
+- Sync Redux registration slice to localStorage on every change; hydrate Redux store from localStorage at startup.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Quick Setup (Frontend only, Windows)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Open PowerShell / Command Prompt and navigate to project:
+   - cd "d:\Mern stack Proejcts\events\frontend"
+2. Install and run:
+   - npm install
+   - npm start
+3. App will run in the browser (typically http://localhost:3000).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## UX Details (Registration & Thank You)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Registration form captures necessary user fields (name, email, phone, event id, notes).
+- On submit:
+  - Dispatch action to add registration to Redux.
+  - Persist updated registrations to localStorage.
