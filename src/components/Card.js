@@ -29,7 +29,7 @@ export default function EventsCards() {
         </div>
       ) : data.length > 0 ? (
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:cols-4 gap-6"
           initial="hidden"
           animate="visible"
           variants={{

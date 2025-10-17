@@ -14,9 +14,13 @@ const SelectedEventSlice = createSlice({
       const next = state.splice(action.payload, 1);
       localStorage.setItem("registrations", JSON.stringify(next));
     },
+    deleteAll: (state) => {
+      localStorage.removeItem("registrations");
+      return [];
+    },
   },
 });
 
-export const { setSelectedEvent, removeRegistration } =
+export const { setSelectedEvent, removeRegistration, deleteAll } =
   SelectedEventSlice.actions;
 export default SelectedEventSlice.reducer;
