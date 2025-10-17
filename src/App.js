@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import Register from "./screens/Register";
 import MyRegistrations from "./screens/MyRegistrations";
 import RegistrationConfirmation from "./screens/RegistrationConfirmation";
+import NotFound from "./screens/NotFound";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             path="/registration-confirmation"
             element={<RegistrationConfirmation />}
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </main>

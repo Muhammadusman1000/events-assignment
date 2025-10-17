@@ -1,7 +1,10 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { MdDeleteForever } from "react-icons/md";
+import { removeRegistration } from "../store/slices/SelectedEvent";
 
 const MyRegistrations = () => {
   const registrations = useSelector((state) => state.selectedEvent);
+  const dispatch = useDispatch();
 
   if (registrations.length === 0) {
     return (
@@ -23,7 +26,7 @@ const MyRegistrations = () => {
         {registrations.map((reg, index) => (
           <div
             key={index}
-            className="bg-white shadow-lg rounded-2xl p-4 sm:p-5 md:p-6 transition transform hover:scale-105 break-words"
+            className="bg-white shadow-lg rounded-2xl p-4 sm:p-5 md:p-6 transition transform hover:scale-105 break-words relative"
           >
             <p className="text-[14px] sm:text-[16px] md:text-[14px] lg:text-[20px] text-gray-700 mb-2">
               <span className="font-semibold">Name:</span> {reg.name}
@@ -37,6 +40,12 @@ const MyRegistrations = () => {
             <p className="text-[14px] sm:text-[16px] md:text-[14px] lg:text-[20px] text-gray-700 mb-2">
               <span className="font-semibold">Event:</span> {reg.eventTitle}
             </p>
+            <div className="absolute top-4 right-4 w-6 h-6 cursor-pointer hover:text-red-700 transition">
+              <MdDeleteForever
+                className="text-red-500 "
+                onClick={() => dispatch(removeRegistration(reg.id))}
+              />
+            </div>
           </div>
         ))}
       </div>
