@@ -117,6 +117,40 @@ src/
 3. Commit changes
 4. Push to branch
 5. Create Pull Request
+   🗑️ Delete Functionality
+   Individual Registration Removal
+   The application allows users to remove specific event registrations:
+
+Click the delete icon (trash can) on any registration card
+Only removes the selected registration
+Other registrations remain unchanged
+Animated removal effect
+Updates both Redux store and localStorage
+Bulk Delete (Clear All)
+For managing multiple registrations at once:
+
+"Clear All" button at the top of My Registrations page
+Removes all stored registrations instantly
+Clears both Redux store and localStorage
+Useful for resetting registration history
+Animated transition to empty state
+
+Use Cases
+Remove registrations for events you can't attend
+Delete outdated registrations
+Start fresh by clearing all history
+Manage your registration list efficiently
+Location
+Access these features in the My Registrations page:
+
+Individual delete: Top-right corner of each registration card
+Clear all: Button at the page header
+User Experience
+Instant feedback on deletion
+Smooth animations during removal
+No confirmation required for single deletions
+Mobile-friendly delete controls
+Visual feedback on hover/touch
 
 ## 📄 License
 
