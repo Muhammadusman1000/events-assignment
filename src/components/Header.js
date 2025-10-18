@@ -16,7 +16,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="bg-gray-600 fixed w-full z-50">
+    <header className="bg-gray-600 w-full z-50">
       <nav className="w-[90%] mx-auto flex justify-between items-center py-3 px-4 md:px-0">
         <h3 className="text-white font-bold text-xl cursor-pointer">
           <Link to="/">Eventify</Link>

@@ -44,17 +44,11 @@ const MyRegistrations = () => {
       animate="visible"
       variants={containerVariants}
     >
-      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center mt-16">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center mt-8">
         My Registrations
       </h1>
-      <p
-        className="text-red-500 underline"
-        onClick={() => dispatch(deleteAll())}
-      >
-        clear all
-      </p>
 
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
         {registrations.map((reg, index) => (
           <motion.div
             key={reg.id || index}
@@ -77,12 +71,18 @@ const MyRegistrations = () => {
             <div className="absolute top-4 right-4 w-6 h-6 cursor-pointer hover:text-red-700 transition">
               <MdDeleteForever
                 className="text-red-500 "
-                onClick={() => dispatch(removeRegistration(reg.id))}
+                onClick={() => dispatch(removeRegistration(index))}
               />
             </div>
           </motion.div>
         ))}
       </div>
+      <p
+        className="text-red-500 underline mx-auto w-max mt-8 cursor-pointer hover:text-red-700 transition"
+        onClick={() => dispatch(deleteAll())}
+      >
+        clear all
+      </p>
     </motion.div>
   );
 };

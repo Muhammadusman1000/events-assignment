@@ -5,6 +5,7 @@ import { fetchEvents } from "../store/slices/EventSlice";
 import { ImSpinner9 } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import "../App.css";
 
 export default function EventsCards() {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ export default function EventsCards() {
   const fallbackImage = "https://picsum.photos/seed/picsum/200/300";
 
   return (
-    <div className="p-4">
+    <div>
       {loading ? (
         <div className="flex justify-center items-center h-screen">
           <ImSpinner9 className="w-8 h-8 animate-spin text-blue-500" />
@@ -29,7 +30,7 @@ export default function EventsCards() {
         </div>
       ) : data.length > 0 ? (
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6"
           initial="hidden"
           animate="visible"
           variants={{
@@ -57,7 +58,7 @@ export default function EventsCards() {
               />
 
               <div className="flex flex-col flex-grow p-4">
-                <h3 className="text-lg font-semibold text-gray-800 mb-1">
+                <h3 className="text-md font-semibold text-gray-800 mb-1">
                   {event.title}
                 </h3>
 

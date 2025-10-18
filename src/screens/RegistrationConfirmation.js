@@ -1,6 +1,27 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+    },
+  },
+};
 
 const RegistrationConfirmation = () => {
   const registrations = useSelector((state) => state.selectedEvent);
@@ -9,8 +30,8 @@ const RegistrationConfirmation = () => {
 
   if (!lastRegistration) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-6">
-        <div className="bg-white shadow-xl rounded-2xl p-8 text-center max-w-md w-full animate-fadeIn">
+      <motion.div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-6">
+        <div className="bg-white mt-8 shadow-xl rounded-2xl p-8 text-center max-w-md w-full animate-fadeIn">
           <p className="text-gray-600">No registration data found.</p>
           <Link
             to="/"
@@ -19,13 +40,21 @@ const RegistrationConfirmation = () => {
             Go Back to Events
           </Link>
         </div>
-      </div>
+      </motion.div>
     );
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-6">
-      <div className="bg-white shadow-xl rounded-2xl p-8 text-center max-w-md w-full animate-fadeIn">
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      vaients={containerVariants}
+      className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-6"
+    >
+      <motion.div
+        variants={cardVariants}
+        className="bg-white shadow-xl rounded-2xl p-4 text-center max-w-md w-full animate-fadeIn"
+      >
         <FaCheckCircle className="text-green-500 text-6xl mx-auto mb-4 animate-bounce" />
         <h1 className="text-2xl font-bold text-gray-800 mb-2">
           Registration Successful!
@@ -63,8 +92,8 @@ const RegistrationConfirmation = () => {
             Go Back to Events
           </Link>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
