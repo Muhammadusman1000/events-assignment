@@ -83,7 +83,7 @@ export default function ViewRegistration() {
             label="Back to Events"
             icon="pi pi-arrow-left"
             className="w-full mt-3 border-none bg-gray-200 text-gray-800 hover:bg-gray-300 py-3 text-lg"
-            onClick={() => navigate("/register/:")}
+            onClick={() => navigate("/")}
           />
         </div>
       </div>
