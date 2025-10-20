@@ -35,7 +35,12 @@ const MyRegistrations = () => {
 
   if (registrations.length === 0) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-blue-50 p-6 gap-10 flex-col">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="flex items-center justify-center min-h-screen bg-blue-50 p-6 gap-10 flex-col"
+      >
         <p className="text-gray-600 text-base sm:text-lg md:text-xl mt-16">
           No registrations found.
         </p>
@@ -45,7 +50,7 @@ const MyRegistrations = () => {
           className="w-full md:w-[60%] lg:w-[30%] mt-3 border-none bg-blue-700 text-white hover:bg-blue-500 py-3 text-lg"
           onClick={() => navigate("/")}
         />
-      </div>
+      </motion.div>
     );
   }
 
@@ -62,7 +67,7 @@ const MyRegistrations = () => {
 
       <motion.div
         layout
-        className="grid gap-6 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4"
+        className="grid gap-6 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3"
         transition={{ layout: { type: "spring", damping: 25, stiffness: 250 } }}
       >
         <AnimatePresence>

@@ -22,10 +22,23 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (!form.name || !form.email || !form.phone) {
       setError("All fields are required!");
       return;
     }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(form.email)) {
+      setError("Please enter a valid email address!");
+      return;
+    }
+    const phonePattern = /^[0-9]{11}$/;
+    if (!phonePattern.test(form.phone)) {
+      setError("Phone number must be 11 digits!");
+      return;
+    }
+
     const formData = { ...form, eventTitle };
     setError("");
     console.log("Submitted form:", formData);
@@ -33,6 +46,7 @@ const Register = () => {
     setForm(initialFormState);
     navigate("/registration-confirmation");
   };
+
   return (
     <motion.div
       className="flex items-center justify-center min-h-screen bg-gray-100"
@@ -73,6 +87,7 @@ const Register = () => {
         <input
           type="text"
           name="phone"
+          maxLength="11"
           placeholder="Phone Number"
           value={form.phone}
           onChange={handleChange}
