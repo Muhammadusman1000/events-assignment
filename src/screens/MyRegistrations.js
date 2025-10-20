@@ -2,6 +2,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { MdDeleteForever } from "react-icons/md";
 import { removeRegistration, deleteAll } from "../store/slices/SelectedEvent";
 import { motion } from "framer-motion";
+import { Button } from "primereact/button";
+import { useNavigate } from "react-router-dom";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -26,20 +28,27 @@ const cardVariants = {
 const MyRegistrations = () => {
   const registrations = useSelector((state) => state.selectedEvent);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   if (registrations.length === 0) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-blue-50 p-6">
+      <div className="flex items-center justify-center min-h-screen bg-blue-50 p-6 gap-10 flex-col">
         <p className="text-gray-600 text-base sm:text-lg md:text-xl mt-16">
           No registrations found.
         </p>
+        <Button
+          label="Back to Events"
+          icon="pi pi-arrow-left"
+          className="w-full md:w-[60%] lg:w-[30%] mt-3 border-none bg-blue-700 text-white hover:bg-blue-500 py-3 text-lg"
+          onClick={() => navigate("/")}
+        />
       </div>
     );
   }
 
   return (
     <motion.div
-      className="min-h-screen bg-blue-50 p-6"
+      className="mt-[14px] w-[90%] md:w-[90%] mx-auto pb-10"
       initial="hidden"
       animate="visible"
       variants={containerVariants}

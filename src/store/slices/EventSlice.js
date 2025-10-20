@@ -5,7 +5,12 @@ export const fetchEvents = createAsyncThunk("events/fetchEvents", async () => {
   const response = await axios.get(
     "https://jsonplaceholder.typicode.com/posts"
   );
-  return response.data;
+  return response.data.map((item, index) => ({
+    ...item,
+    imageUrl: `https://picsum.photos/seed/${index}/400/250`,
+    date: `2025-11-${String(index + 1).padStart(2, "0")}`,
+    location: index % 2 === 0 ? "Lahore" : "Karachi",
+  }));
 });
 
 const initialState = {

@@ -6,6 +6,8 @@ import { ImSpinner9 } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import "../App.css";
+import { CiCalendarDate } from "react-icons/ci";
+import { IoLocationOutline } from "react-icons/io5";
 
 export default function EventsCards() {
   const dispatch = useDispatch();
@@ -61,18 +63,35 @@ export default function EventsCards() {
                 <h3 className="text-md font-semibold text-gray-800 mb-1">
                   {event.title}
                 </h3>
+                <div className="space-y-2 mb-6 text-gray-600 mt-5">
+                  <p className="flex items-center gap-2  text-sm">
+                    <span className="font-semibold text-gray-700 flex gap-2 items-center">
+                      <CiCalendarDate className="text-blue-700 text-[20px]" />{" "}
+                      Date:
+                    </span>{" "}
+                    {event.date}
+                  </p>
+                  <p className="flex items-center gap-2 text-sm">
+                    <span className="font-semibold text-gray-700 flex gap-2 items-center">
+                      <IoLocationOutline className="text-red-400 text-[20px]" />
+                      Location:
+                    </span>{" "}
+                    {event.location}
+                  </p>
+                </div>
 
                 <p className="text-gray-600 text-sm flex-grow line-clamp-3">
                   {event.body}
                 </p>
+
                 <Button
-                  label="Register"
+                  label="View Registeration"
                   icon="pi pi-check"
-                  className="mt-4 py-1 rounded-md bg-blue-600 hover:bg-blue-700 text-white border-none w-full"
+                  className="mt-4 py-3 rounded-md bg-blue-600 hover:bg-blue-700 text-white border-none w-full"
                   onClick={() =>
-                    navigate(`/register/${event.id}`, {
+                    navigate(`/view-registeration/${event.id}`, {
                       state: {
-                        eventTitle: event.title,
+                        event: event,
                       },
                     })
                   }

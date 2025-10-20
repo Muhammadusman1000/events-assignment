@@ -6,6 +6,7 @@ import Register from "./screens/Register";
 import MyRegistrations from "./screens/MyRegistrations";
 import RegistrationConfirmation from "./screens/RegistrationConfirmation";
 import NotFound from "./screens/NotFound";
+import ViewRegisteration from "./screens/ViewRegisteration";
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
           <Route
             path="/registration-confirmation"
             element={<RegistrationConfirmation />}
+          />
+          <Route
+            path="/view-registeration/:id"
+            element={<ViewRegisteration />}
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
