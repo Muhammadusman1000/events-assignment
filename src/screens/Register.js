@@ -87,6 +87,7 @@ const Register = () => {
         <input
           type="text"
           name="phone"
+          minLength="11"
           maxLength="11"
           placeholder="Phone Number"
           value={form.phone}
